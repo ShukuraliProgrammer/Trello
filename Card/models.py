@@ -1,6 +1,7 @@
 from django.db import models
 from django.utils.translation import gettext_lazy as _
 from Common.models import BaseModel
+from Cart_items.models import List
 
 
 class Card(BaseModel):
@@ -19,7 +20,8 @@ class Card(BaseModel):
         APPROVED = 'AR', _('Approved')
         NOT_SURE = 'NS', _('Not sure')
 
-    list = models.ForeignKey
+    list = models.ForeignKey('Cart_items.List', on_delete=models.CASCADE,
+                             related_name='cards', verbose_name='cards of a list')
     member = models.ManyToManyField('Accounts.User', related_name='cards')
     title = models.CharField(max_length=100, verbose_name='Title')
     description = models.TextField(verbose_name='Description')
@@ -35,3 +37,4 @@ class Card(BaseModel):
         verbose_name = 'Card'
         verbose_name_plural = 'Cards'
         ordering = ('title',)
+

@@ -35,3 +35,5 @@ class Board(BaseModel):
     class Meta:
         verbose_name = 'Board'
         verbose_name_plural = 'Boards'
+        order_with_respect_to = 'workspace'
+

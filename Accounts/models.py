@@ -16,3 +16,4 @@ class User(AbstractUser):
     class Meta:
         verbose_name = 'Member'
         verbose_name_plural = 'Members'
+        base_manager_name = 'objects'
